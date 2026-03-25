@@ -1,0 +1,795 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --primary: #1a56db;
+    --primary-dark: #1346b5;
+    --primary-light: #e8effe;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #d1d5db;
+    --bg: #f3f4f6;
+    --card-bg: #ffffff;
+    --shadow: 0 1px 4px rgba(0, 0, 0, .08), 0 4px 16px rgba(0, 0, 0, .06);
+    --radius: 10px;
+    --font: 'Inter', system-ui, sans-serif;
+    --section-1: #1a56db;
+    --section-2: #0e9f6e;
+    --section-3: #7e3af2;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden; /* Trava qualquer vazamento lateral de elementos */
+    -webkit-font-smoothing: antialiased; /* Deixa as fontes mais nítidas */
+}
+
+/* ===== HEADER ===== */
+.app-header {
+    background: var(--primary);
+    color: #fff;
+    padding: 0 1.5rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(26, 86, 219, .3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -.3px;
+}
+
+.badge {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    background: rgba(255, 255, 255, .2);
+    border: 1px solid rgba(255, 255, 255, .35);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 7px;
+}
+
+/* ===== LAYOUT ===== */
+.main-content {
+    max-width: 960px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+/* ===== PAGE SECTION TITLE ===== */
+.section-title {
+    display: block !important;
+    font-size: 2.1rem !important; /* Aumento de ~80% em relação ao original */
+    font-weight: 850 !important;  /* Deixa a letra bem encorpada */
+    color: var(--text) !important;
+    margin-bottom: 2rem !important; /* Cria o respiro necessário antes da caixa do seletor */
+    letter-spacing: -0.5px !important; /* Estilo moderno de título principal */
+    line-height: 1.2 !important;
+}
+
+/* ===== TIPO DE CONTRATO SELECTOR ===== */
+.tipo-selector-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #1a56db08 0%, #7e3af208 100%);
+    border: 1.5px solid var(--primary);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.tipo-icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: all .2s;
+}
+
+.tipo-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.tipo-label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: .15rem;
+}
+
+.tipo-hint {
+    font-size: .78rem;
+    color: var(--text-muted);
+}
+
+.tipo-select {
+    flex-shrink: 0;
+    min-width: 220px;
+    border: 1.5px solid var(--primary);
+    border-radius: 8px;
+    padding: .6rem 1rem;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: var(--font);
+    color: var(--primary);
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow .15s;
+}
+
+.tipo-select:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, .15);
+}
+
+/* ===== FORM SECTION BLOCKS ===== */
+.form-section-block {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .7rem 1.25rem;
+    background: #f8f9fb;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section-block:nth-of-type(1) .form-section-header {
+    border-left: 4px solid var(--section-1);
+}
+
+.form-section-block:nth-of-type(2) .form-section-header {
+    border-left: 4px solid var(--section-2);
+}
+
+.form-section-block:nth-of-type(3) .form-section-header {
+    border-left: 4px solid var(--section-3);
+}
+
+.form-section-number {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .73rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.form-section-block:nth-of-type(1) .form-section-number {
+    background: var(--section-1);
+}
+
+.form-section-block:nth-of-type(2) .form-section-number {
+    background: var(--section-2);
+}
+
+.form-section-block:nth-of-type(3) .form-section-number {
+    background: var(--section-3);
+}
+
+.form-section-label {
+    font-size: .85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text);
+}
+
+/* ===== INNER GRID ===== */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+}
+
+/* ===== FIELDSETS ===== */
+.fieldset {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+.fieldset legend {
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--primary);
+    padding: 0 .4rem;
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1.25rem;
+    margin-bottom: 1rem; /* Margem padrão entre os campos */
+}
+
+/* Garante que NADA dentro do form-group escape do limite */
+.form-group > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* A seção branca do formulário */
+.card, .form-section-block {
+    background: #fff;
+    padding-bottom: 2rem; /* O espaço no fundo que você queria */
+    border-radius: 8px;
+    /* ... outras regras de borda/sombra que você já tenha ... */
+}
+
+/* Os campos propriamente ditos */
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: .65rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    box-sizing: border-box; /* Garante que não vaze para a direita */
+}
+.form-group textarea {
+    resize: vertical; /* Permite aumentar a altura, mas trava a largura em 100% */
+    min-height: 80px;  /* Opcional: define uma altura mínima inicial legal */
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, .12);
+}
+
+/* ===== INLINE ROWS & INNER ROWS ===== */
+.form-row, .form-row-inner {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .9rem;
+    width: 100%;
+}
+
+.form-row { 
+    padding: 0 1.25rem; 
+}
+
+.form-row .form-group, .form-row-inner .form-group {
+    flex: 1;
+}
+
+/* AJUSTES DE ENDEREÇO (Substituindo o antigo "Endereço Completo") */
+.address-row-main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+    margin-bottom: .9rem;
+}
+
+.address-row-city {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-bottom: .9rem;
+}
+
+/* Section-2 form groups with side padding */
+.form-section-block:nth-of-type(2) > .form-group,
+.form-section-block:nth-of-type(2) > .ps-field,
+.form-section-block:nth-of-type(2) > .cv-field {
+    padding: 0 1.25rem;
+    margin-bottom: .9rem;
+}
+
+/* ===== FORO BLOCK ===== */
+.foro-group {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding: 1.25rem;
+}
+
+.foro-group input {
+    max-width: 340px;
+}
+
+/* ===== ESTILO PARA O CAMPO DE FORO ===== */
+.foro-input {
+    width: 100%; /* Faz ele ocupar a largura toda */
+    border: 1px solid #d1d5db; /* Cor de borda padrão do seu app */
+    border-radius: 8px; /* Arredondamento suave */
+    padding: 10px 14px; /* Espaçamento interno para o texto não colar na borda */
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    margin-top: 4px;
+}
+
+/* Efeito de destaque quando você clica para digitar */
+.foro-input:focus {
+    border-color: #1a56db; /* O azul que você usa no header */
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+
+/* Ajuste do texto de ajuda embaixo do campo */
+.field-hint {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+/* ===== BUTTONS ===== */
+.btn-row {
+    display: flex;
+    gap: .75rem;
+    margin-top: 1.75rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .65rem 1.5rem;
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+    border: none;
+    transition: all .15s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 720px) {
+    .form-grid, .form-row, .form-row-inner, .address-row-main, .address-row-city {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* 1. Faz o container ocupar 100% da área laranja */
+.form-grid {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo se a tela for gigante */
+}
+
+/* 2. Faz o wrapper das colunas usar todo o espaço disponível */
+.form-sides-wrapper {
+    display: flex;
+    gap: 24px;         /* Espaço entre Contratante e Contratado */
+    width: 100%;       /* Ocupa a largura total da área laranja */
+    max-width: 1200px; /* Opcional: evita que fique esticado demais em monitores UltraWide */
+    align-items: flex-start;
+}
+
+/* 3. Faz cada bloco (verde) crescer igualmente */
+.fieldset {
+    flex: 1;           /* Isso obriga os dois a dividirem o espaço 50/50 */
+    min-width: 0;      /* Evita quebras de layout */
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: #ffffff; /* Garante que o fundo seja branco dentro da área */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Um toque profissional */
+}
+
+/* Ajuste para telas de celular */
+@media (max-width: 850px) {
+    .form-sides-wrapper {
+        flex-direction: column;
+    }
+    .fieldset {
+        width: 100%;
+    }
+}
+
+/* ===== ESTILIZAÇÃO DO CONTRATO GERADO (IMPRESSÃO/VISUALIZAÇÃO) ===== */
+
+/* Bloco que envolve cada seção (Contratante, Objeto, etc) */
+.meta-block {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+/* Títulos das seções (CONTRATANTE, CONTRATADO, OBJETO...) */
+.meta-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1rem;
+    display: block;
+    padding-bottom: 4px;
+}
+
+/* Espaçamento entre as cláusulas */
+/* Espaçamento entre as cláusulas e controle de quebra de página */
+.clause {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    /* ADICIONE A LINHA ABAIXO: */
+    page-break-inside: avoid; 
+}
+
+/* Título da Cláusula (Cláusula 1ª — Do Objeto) */
+.clause-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Espaçamento entre parágrafos de texto */
+.clause p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+/* Container das Assinaturas */
+.signatures-wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sig-line-container {
+    text-align: center;
+    width: 350px;
+    margin: 0 auto;
+}
+
+.sig-line {
+    border-top: 1px solid #000;
+    margin-bottom: 8px;
+}
+
+.sig-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.sig-role {
+    font-size: 0.85rem;
+    color: #333;
+}
+
+/* A "Caixa Mãe": Onde resolvemos o fundo e o respiro final */
+.card, .form-section-block {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;          /* Espaço equilibrado em cima e nas laterais */
+    padding-bottom: 2.5rem;   /* O respiro maior que você queria no fundo */
+    margin-bottom: 2rem;      /* Distância entre as seções do formulário */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: block;
+    overflow: visible;        /* Garante que sombras e bordas apareçam 100% */
+}
+
+/* Garante que o último campo de cada seção não encoste no fundo */
+.form-group:last-child {
+    margin-bottom: 25px !important;
+}
+
+/* 1. Título: Fica no topo da seção, sozinho */
+h3 {
+    display: block;
+    width: 100%;
+    text-align: left;      /* Alinha o texto à esquerda */
+    padding: 0 1.25rem;    /* Mesmo recuo dos campos do formulário */
+    margin: 3.5rem 0 1rem 0; /* Espaço generoso acima (linha verde) */
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    text-transform: uppercase;
+}
+
+/* 2. Botões: Ficam embaixo do título, alinhados à esquerda */
+.btn-row, .preview-toolbar {
+    display: flex !important;
+    justify-content: flex-start; /* Alinha os botões à esquerda (linha amarela) */
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 0 1.25rem;
+    margin-bottom: 3rem !important; /* Espaço antes de começar o contrato */
+}
+
+/* 1. O Título agora EXPULSA os botões para baixo */
+/* ===== SEÇÃO DE PRÉ-VISUALIZAÇÃO (DESIGN FINAL COM CORES) ===== */
+
+/* 1. Título: No topo e alinhado */
+h3.preview-title {
+    display: block;
+    width: 100%;
+    padding: 0 1.25rem !important;
+    margin: 4rem 0 1.5rem 0 !important;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text);
+    text-transform: uppercase;
+}
+
+/* 2. Container dos Botões */
+.preview-toolbar.btn-row {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 0 1.25rem !important;
+    margin-bottom: 3.5rem !important;
+    justify-content: flex-start;
+}
+
+/* 3. CORES DOS BOTÕES (A parte que você pediu) */
+
+/* WhatsApp: Verde Sucesso */
+.btn-whatsapp {
+    background-color: #25D366 !important;
+    color: white !important;
+}
+.btn-whatsapp:hover {
+    background-color: #128C7E !important;
+}
+
+/*e-mail: azul*/
+/*.btn-email {
+    background-color: #1a56db !important;
+}
+.btn-email:hover {
+    background-color: #1346b5 !important;
+}*/
+
+/* Imprimir/PDF: Cinza Profissional (Sugestão de Designer) */
+.btn-print {
+    background-color: #4b5563 !important;
+    color: white !important;
+}
+.btn-print:hover {
+    background-color: #374151 !important;
+}
+
+/* Editar: Laranja Alerta (Sugestão de Designer) */
+.btn-edit {
+    background-color: #f59e0b !important;
+    color: white !important;
+}
+.btn-edit:hover {
+    background-color: #d97706 !important;
+}
+
+/* 4. Ajuste do papel do contrato */
+#previewSection {
+    padding: 2.5rem 1.25rem !important;
+    border-top: 1px solid var(--border);
+    background: #fff;
+}
+
+/* ===== CONFIGURAÇÃO DE IMPRESSÃO (RESOLVE A ÁREA LARANJA) ===== */
+@media print {
+    /* --- 1. CONFIGURAÇÃO DA FOLHA (NOVO) --- */
+    /* Isso remove as margens gigantes que o navegador coloca sozinho */
+    @page {
+        margin: 1cm 1.5cm; 
+    }
+
+    /* --- 2. ESCONDER ELEMENTOS (SEU CÓDIGO + AJUSTES) --- */
+    /* Esconde tudo o que não é o texto do contrato */
+    .app-header, .tipo-selector-block, .form-section-block, .btn-row, .preview-toolbar,
+    #whatsappBtn, #printBtn, #editBtn, .header-inner {
+        display: none !important;
+    }
+
+    /* --- 3. LIMPEZA VISUAL (SEU CÓDIGO) --- */
+    body { 
+        background: white !important; 
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card { 
+        box-shadow: none !important; 
+        border: none !important; 
+        padding: 0 !important; 
+    }
+
+    /* --- 4. ORGANIZAÇÃO DO TEXTO (NOVO: RESOLVE AS PÁGINAS EM BRANCO) --- */
+    #previewSection {
+        display: block !important;
+        visibility: visible !important;
+        width: 100%;
+        font-size: 11pt; /* Tamanho de letra ideal para documentos */
+        line-height: 1.4; /* Espaço entre linhas para o texto não "vazar" */
+    }
+
+    /* Impede que uma cláusula seja cortada ao meio se houver espaço na página anterior */
+    .clause, p, .contract-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 8px !important;
+    }
+
+    /* Impede que títulos (Cláusula 1ª, etc) fiquem sozinhos no fim da página */
+    h1, h2, h3, strong {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    /* Garante que as assinaturas não fiquem gigantes na impressão */
+    .sig-line-container {
+        page-break-inside: avoid;
+        margin-top: 20px !important;
+    }
+}
+
+/* ============================================================
+    AJUSTES DE RESPONSIVIDADE (FOCO EM CELULARES)
+    Este bloco corrige o layout "espremido" e textos verticais
+   ============================================================ */
+
+@media (max-width: 600px) {
+    /* 1. Remove margens laterais e faz o conteúdo ocupar a tela toda */
+    .main-content {
+        margin: 1rem 0 !important;
+        padding: 0 10px !important;
+    }
+
+    /* 2. Garante que os CARDS (áreas brancas) não transbordem */
+    .card, .form-section-block, .fieldset {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important; /* Respiro interno menor para telas finas */
+        margin-bottom: 1.5rem !important;
+        flex: none !important; /* Desativa o flex 50/50 que espreme o texto */
+    }
+
+    /* 3. CORREÇÃO CRITICAL: Transforma colunas em linhas únicas */
+    /* Isso resolve o texto "TIPO DE CONTRATO" e os campos Contratante/Contratado */
+    .tipo-selector-block, 
+    .form-sides-wrapper, 
+    .form-grid, 
+    .form-row, 
+    .form-row-inner, 
+    .address-row-main, 
+    .address-row-city {
+        display: flex !important;
+        flex-direction: column !important; /* Empilha um embaixo do outro */
+        gap: 1rem !important;
+    }
+
+    /* 4. Ajusta o seletor de tipo de contrato (que estava quebrando) */
+    .tipo-select {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* 5. Melhora o espaçamento dos grupos de formulário */
+    .form-group {
+        padding: 0 !important; /* Remove o padding lateral excessivo no celular */
+        margin-bottom: 1.25rem !important;
+    }
+
+    /* 6. Evita o zoom automático no iPhone ao clicar nos campos */
+    input, select, textarea {
+        font-size: 16px !important; /* Mínimo exigido pelo iOS para não dar zoom */
+        padding: 12px !important;    /* Mais fácil de tocar com o dedo */
+    }
+
+    /* 7. Ajuste do Contrato Gerado (Texto do contrato) */
+    .clause, .clause p, #previewSection {
+        font-size: 15px !important; /* Texto legível no celular */
+        text-align: left !important; /* Justificado em tela pequena às vezes cria buracos brancos */
+        line-height: 1.5 !important;
+    }
+
+    /* 8. Faz as assinaturas ocuparem a largura total e centralizarem */
+    .sig-line-container {
+        width: 100% !important;
+        max-width: 280px;
+        margin: 0 auto 30px auto !important;
+    }
+
+    /* 9. Ajusta os botões (WhatsApp, Imprimir, etc) para não ficarem minúsculos */
+    .btn {
+        width: 100% !important; /* Cada botão vira uma linha inteira no celular */
+        margin-bottom: 5px;
+    }
+}
+
+.header-inner a {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.header-inner a:active {
+    transform: scale(0.9); /* Dá um efeito de clique no celular */
+}
+
+/* Controle de exibição do campo de bem (refatoração) */
+#wrapBem {
+    display: none;
+}
+
+#wrapBem.ativo {
+    display: block;
+    margin-top: 35px;
+}
+
