@@ -49,7 +49,7 @@ function gerarTextoPagamento(d) {
     if (forma === 'parcelado') {
         const dataPrimeira = d.data_primeira_parcela || '';
         const dataTexto = dataPrimeira 
-            ? `, com vencimento da primeira parcela em <strong>${formatDate(dataPrimeira)}</strong> e as demais a cada 30 dias`
+            ? `, com vencimento da primeira parcela em <strong>${formatDate(dataPrimeira)}</strong> e as demais com vencimentos mensais sucessivos no mesmo dia dos meses subsequentes`
             : '';
         if (tipoParcela === 'com_entrada') {
             return `o valor total de <strong>R$ ${valorTotal}</strong>, sendo uma <strong>entrada de R$ ${entrada}</strong> e o saldo restante dividido em <strong>${qtd} parcelas de ${valorCadaParcela}</strong>${dataTexto}.`;
