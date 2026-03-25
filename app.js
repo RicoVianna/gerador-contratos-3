@@ -868,19 +868,30 @@ function gerarCronogramaParcelas(dataInicial, qtd, valorParcela) {
     const datas = [];
     const [ano, mes, dia] = dataInicial.split('-').map(Number);
 
-    let data = new Date(ano, mes - 1, dia);
+    const diaOriginal = dia;
 
     for (let i = 1; i <= qtd; i++) {
+
+        // calcula mês correto baseado no índice
+        const mesAtual = mes - 1 + (i - 1);
+        const anoAtual = ano + Math.floor(mesAtual / 12);
+        const mesFinal = mesAtual % 12;
+
+        // pega último dia do mês
+        const ultimoDiaMes = new Date(anoAtual, mesFinal + 1, 0).getDate();
+
+        // define o dia correto (ou último do mês)
+        const diaFinal = Math.min(diaOriginal, ultimoDiaMes);
+
+        const dataObj = new Date(anoAtual, mesFinal, diaFinal);
+
         const dataFormatada = formatDate(
-            `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(2, '0')}-${String(data.getDate()).padStart(2, '0')}`
+            `${dataObj.getFullYear()}-${String(dataObj.getMonth() + 1).padStart(2, '0')}-${String(dataObj.getDate()).padStart(2, '0')}`
         );
 
         datas.push(
             `<p>${i}ª parcela: <strong>${valorParcela}</strong> — vencimento em <strong>${dataFormatada}</strong></p>`
         );
-
-        // adiciona 1 mês
-        data.setMonth(data.getMonth() + 1);
     }
 
     return `
