@@ -48,13 +48,20 @@ function gerarTextoPagamento(d) {
 
     if (forma === 'parcelado') {
         const dataPrimeira = d.data_primeira_parcela || '';
+        const cronograma = gerarCronogramaParcelas(
+            dataPrimeira,
+            qtd,
+            valorCadaParcela
+        );
         const dataTexto = dataPrimeira 
             ? `, com vencimento da primeira parcela em <strong>${formatDate(dataPrimeira)}</strong> e as demais com vencimentos mensais sucessivos no mesmo dia dos meses subsequentes`
             : '';
         if (tipoParcela === 'com_entrada') {
-            return `o valor total de <strong>R$ ${valorTotal}</strong>, sendo uma <strong>entrada de R$ ${entrada}</strong> e o saldo restante dividido em <strong>${qtd} parcelas de ${valorCadaParcela}</strong>${dataTexto}.`;
+            return `o valor total de <strong>R$ ${valorTotal}</strong>, sendo uma <strong>entrada de R$ ${entrada}</strong> e o saldo restante dividido em <strong>${qtd} parcelas de ${valorCadaParcela}</strong>${dataTexto}.
+            ${cronograma}`;
         } else {
-            return `o valor total de <strong>R$ ${valorTotal}</strong>, dividido em <strong>${qtd} parcelas de ${valorCadaParcela}</strong>${dataTexto}.`;
+            return `o valor total de <strong>R$ ${valorTotal}</strong>, dividido em <strong>${qtd} parcelas de ${valorCadaParcela}</strong>${dataTexto}.
+            ${cronograma}`;
         }
     }
     
@@ -854,4 +861,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function gerarCronogramaParcelas(dataInicial, qtd, valorParcela) {
+    if (!dataInicial || !qtd) return '';
+
+    const datas = [];
+    const [ano, mes, dia] = dataInicial.split('-').map(Number);
+
+    let data = new Date(ano, mes - 1, dia);
+
+    for (let i = 1; i <= qtd; i++) {
+        const dataFormatada = formatDate(
+            `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(2, '0')}-${String(data.getDate()).padStart(2, '0')}`
+        );
+
+        datas.push(
+            `<p>${i}ª parcela: <strong>${valorParcela}</strong> — vencimento em <strong>${dataFormatada}</strong></p>`
+        );
+
+        // adiciona 1 mês
+        data.setMonth(data.getMonth() + 1);
+    }
+
+    return `
+        <div style="margin-top:10px">
+            <strong>Cronograma de Parcelas:</strong>
+            ${datas.join('')}
+        </div>
+    `;
+}
 
