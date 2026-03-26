@@ -95,6 +95,25 @@ function escapeHtml(str) {
         .replace(/\n/g, '<br>');
 }
 
+function gerarNumeroContrato() {
+    const ano = new Date().getFullYear();
+    let contador = localStorage.getItem('contador_contrato');
+
+    if (!contador) {
+        contador = 1;
+    } else {
+        contador = parseInt(contador) + 1;
+    }
+
+    localStorage.setItem('contador_contrato', contador);
+
+    const numeroFormatado = String(contador).padStart(4, '0');
+
+    return `${ano}-${numeroFormatado}`;
+}
+
+
+
 function val(d, key, fallback) {
     return (d[key] && d[key].trim()) ? escapeHtml(d[key]) : (fallback || '—');
 }
@@ -142,11 +161,12 @@ function validateForm(form) {
 // ================================================================
 // CONTRACT GENERATOR: PRESTAÇÃO DE SERVIÇOS
 // ================================================================
-function buildPrestacaoServicos(d) {
+function buildPrestacaoServicos(d, numeroContrato) {
     const qualContratante = buildQualificacao(d, 'contratante', 'CONTRATANTE');
     const qualContratado = buildQualificacao(d, 'contratado', 'CONTRATADO');
     const n = temConteudo(d.clausulas) ? 9 : 8;/* 01 */
     return `
+        <div class="contract-number">Contrato nº ${d.numeroContrato}</div>
         <h1>Contrato de Prestação de Serviços</h1>
 
         <div class="contract-intro">
@@ -258,6 +278,7 @@ function buildCompraVenda(d) {
     const localEntrega = d.local_entrega && d.local_entrega.trim() ? d.local_entrega.trim() : val(d, 'local');
 
     return `
+        <div class="contract-number">Contrato nº ${d.numeroContrato}</div>
         <h1>Contrato de Compra e Venda</h1>
 
         <div class="contract-intro">
@@ -357,6 +378,13 @@ function buildCompraVenda(d) {
     `;
 }
 
+function buildContractHTML(d) {
+    if (d.tipo_contrato === 'compravenda') {
+        return buildCompraVenda(d);
+    }
+    return buildPrestacaoServicos(d);
+}
+
 // ---- Shared signatures block ----
 function buildSignatures(d, roleA, roleB, prefixA, prefixB) {
     const nomeA = d[prefixA + '_nome'] || "___________________________";
@@ -394,9 +422,21 @@ function buildSignatures(d, roleA, roleB, prefixA, prefixB) {
 }
 
 // ---- Route to correct generator ----
-function buildContractHTML(d) {
-    if (d.tipo_contrato === 'compravenda') return buildCompraVenda(d);
-    return buildPrestacaoServicos(d);
+function gerarNumeroContrato() {
+    const ano = new Date().getFullYear();
+    let contador = localStorage.getItem('contador_contrato');
+
+    if (!contador) {
+        contador = 1;
+    } else {
+        contador = parseInt(contador) + 1;
+    }
+
+    localStorage.setItem('contador_contrato', contador);
+
+    const numeroFormatado = String(contador).padStart(4, '0');
+
+    return `${ano}-${numeroFormatado}`;
 }
 
 function collectData(form) {
@@ -549,6 +589,7 @@ form.addEventListener('submit', (e) => {
     }
 
     const data = collectData(form);
+    data.numeroContrato = gerarNumeroContrato();
     contractOutput.innerHTML = buildContractHTML(data);
     previewSection.hidden = false;
     previewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -919,5 +960,17 @@ function gerarCronogramaParcelas(dataInicial, qtd, valorParcela) {
             ${datas.join('')}
         </div>
     `;
+}
+
+function gerarNumeroContrato() {
+    const agora = new Date();
+
+    const ano = agora.getFullYear();
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const dia = String(agora.getDate()).padStart(2, '0');
+
+    const aleatorio = Math.floor(1000 + Math.random() * 9000);
+
+    return `${ano}${mes}${dia}-${aleatorio}`;
 }
 
