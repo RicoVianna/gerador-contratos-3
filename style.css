@@ -1,3 +1,21 @@
+/* AJUSTE FINAL: ASSINATURAS LADO A LADO */
+.signatures-wrapper {
+    display: flex !important;
+    flex-direction: row !important; /* Força ficar na mesma linha */
+    justify-content: space-around !important; /* Afasta um do outro */
+    align-items: flex-start !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin-top: 80px !important;
+}
+
+.sig-line-container, .signature-block {
+    flex: 1 !important;
+    max-width: 40% !important; /* Impede que uma linha encoste na outra */
+    text-align: center !important;
+    display: block !important;
+}
+
 /* ===== RESET & BASE ===== */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -501,12 +519,21 @@ body {
     line-height: 1.6;
 }
 
-/* Container das Assinaturas */
 .signatures-wrapper {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    margin-top: 80px;      /* Aumenta o espaço entre a Data e a primeira assinatura */
+    display: flex;         /* Ativa o modo de colunas */
+    flex-direction: row;   /* Força ficar um do lado do outro */
+    flex-wrap: wrap;       /* Se a tela for pequena, ele pula para baixo automaticamente */
+    justify-content: space-between; /* Empurra um para a esquerda e outro para a direita */
+    gap: 40px;             /* Espaço mínimo entre as assinaturas */
+    width: 100%;
+}
+
+.sig-line-container {
+    text-align: center;
+    flex: 1;               /* Faz as duas assinaturas terem o mesmo tamanho */
+    min-width: 250px;      /* Evita que fiquem espremidas em telas médias */
+    margin: 0 auto;
 }
 
 .sig-line-container {
@@ -643,62 +670,133 @@ h3.preview-title {
 
 /* ===== CONFIGURAÇÃO DE IMPRESSÃO (RESOLVE A ÁREA LARANJA) ===== */
 @media print {
-    /* --- 1. CONFIGURAÇÃO DA FOLHA (NOVO) --- */
-    /* Isso remove as margens gigantes que o navegador coloca sozinho */
+
+    /* CONFIGURAÇÃO DA PÁGINA */
     @page {
-        margin: 1cm 1.5cm; 
+        margin: 1.5cm;
     }
 
-    /* --- 2. ESCONDER ELEMENTOS (SEU CÓDIGO + AJUSTES) --- */
-    /* Esconde tudo o que não é o texto do contrato */
-    .app-header, .tipo-selector-block, .form-section-block, .btn-row, .preview-toolbar,
-    #whatsappBtn, #printBtn, #editBtn, .header-inner {
+    /* ESCONDE TUDO */
+    body * {
+        visibility: hidden;
+    }
+
+    /* MOSTRA SOMENTE O CONTRATO */
+    #contractOutput,
+    #contractOutput * {
+        visibility: visible;
+    }
+
+    /* POSICIONA O CONTRATO NA PÁGINA */
+    #contractOutput {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    /* REMOVE ELEMENTOS DA INTERFACE */
+    .app-header,
+    .tipo-selector-block,
+    .form-section-block,
+    .btn-row,
+    .preview-toolbar,
+    #whatsappBtn,
+    #printBtn,
+    #editBtn,
+    .header-inner {
         display: none !important;
     }
 
-    /* --- 3. LIMPEZA VISUAL (SEU CÓDIGO) --- */
-    body { 
-        background: white !important; 
-        width: 100%;
+    /* LIMPEZA VISUAL */
+    body {
+        background: white !important;
         margin: 0;
         padding: 0;
     }
 
-    .card { 
-        box-shadow: none !important; 
-        border: none !important; 
-        padding: 0 !important; 
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
     }
 
-    /* --- 4. ORGANIZAÇÃO DO TEXTO (NOVO: RESOLVE AS PÁGINAS EM BRANCO) --- */
+    /* ÁREA DO CONTRATO */
     #previewSection {
         display: block !important;
-        visibility: visible !important;
         width: 100%;
-        font-size: 11pt; /* Tamanho de letra ideal para documentos */
-        line-height: 1.4; /* Espaço entre linhas para o texto não "vazar" */
+        font-size: 11pt;
+        line-height: 1.5;
     }
 
-    /* Impede que uma cláusula seja cortada ao meio se houver espaço na página anterior */
-    .clause, p, .contract-section {
-        page-break-inside: avoid;
-        break-inside: avoid;
-        margin-bottom: 8px !important;
+    /* CONTROLE DE PÁGINAS */
+    .page {
+        page-break-after: always;
+        break-after: page;
     }
 
-    /* Impede que títulos (Cláusula 1ª, etc) fiquem sozinhos no fim da página */
-    h1, h2, h3, strong {
-        page-break-after: avoid;
-        break-after: avoid;
+    .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
     }
 
-    /* Garante que as assinaturas não fiquem gigantes na impressão */
-    .sig-line-container {
-        page-break-inside: avoid;
-        margin-top: 20px !important;
+    /* EVITA QUEBRAS FEIAS */
+    
+    /* 1. Permite que as cláusulas quebrem entre páginas (isso remove os buracos brancos) */
+    .clause, .meta-block, p {
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+        display: block;
     }
+
+    /* 2. Impede que o Título da Cláusula fique sozinho no fim de uma página */
+    .clause-title, h1, h2, h3 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* 3. PROTEÇÃO DAS ASSINATURAS: Garante que o bloco de assinaturas não seja cortado */
+    /* Ajuste do container das assinaturas na impressão */
+    .signatures-wrapper {
+    margin-top: 80px !important;
+    display: flex !important;
+    flex-direction: row !important; /* Aqui forçamos o lado a lado */
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    gap: 30px !important;
+    width: 100% !important;
 }
 
+.sig-line-container {
+    flex: 1 !important;
+    max-width: 320px !important; /* Ajusta a largura da linha de assinatura */
+    margin: 0 auto !important;
+}
+
+    /* Ajuste de cada campo de assinatura individual */
+    .sig-line-container, 
+    .signature-block {
+        flex: 1 !important;             /* Faz as duas ocuparem o mesmo espaço */
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin-top: 0 !important;       /* Remove margens que entortam o alinhamento */
+        text-align: center !important;
+    }
+
+    /* 4. Garante que Local e Data tentem ficar na mesma página das assinaturas */
+    .contract-place-date {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        margin-top: 40px !important;
+    }
+
+    /* 5. Ajuste final das linhas de assinatura */
+    .sig-line-container {
+        margin-bottom: 40px !important;
+    }
+}
 /* ============================================================
     AJUSTES DE RESPONSIVIDADE (FOCO EM CELULARES)
     Este bloco corrige o layout "espremido" e textos verticais
@@ -792,4 +890,156 @@ h3.preview-title {
     display: block;
     margin-top: 35px;
 }
+
+/* ===== DOCUMENTO PDF PROFISSIONAL ===== */
+
+.document {
+    width: 210mm;
+    margin: 0 auto;
+    font-family: "Times New Roman", serif;
+    color: #000;
+}
+
+.page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 25mm;
+    box-sizing: border-box;
+    page-break-after: always;
+}
+
+/* TÍTULO */
+h1 {
+    text-align: center;
+    font-size: 18pt;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* NÚMERO DO CONTRATO */
+.contract-number {
+    text-align: right;
+    font-size: 10pt;
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+.contract-intro,
+.meta-block,
+.clause {
+    text-align: justify;
+    font-size: 12pt;
+    line-height: 1.6;
+}
+
+/* CLÁUSULAS */
+.clause {
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+}
+
+.clause-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* LOCAL E DATA */
+.contract-place-date {
+    margin-top: 40px;
+    text-align: right;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+/* ASSINATURAS */
+.signatures {
+    margin-top: 120px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.signature-line {
+    margin-top: 60px;
+    text-align: center;
+}
+
+    /* Remove sombras/cartões */
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .page:last-child {
+        page-break-after: auto;
+    }
+
+    .contract-number {
+        text-align: right;
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    /* ===== MODO IMPRESSÃO PROFISSIONAL (CORRIGIDO) ===== */
+
+
+.signatures {
+    margin-top: 60px;
+}
+
+.sig-line-container {
+    margin-bottom: 50px;
+}
+
+.sig-line {
+    border-top: 1px solid #000;
+    margin: 40px auto 10px auto;
+    width: 300px;
+}
+
+.sig-name {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.sig-role {
+    text-align: center;
+    font-size: 11pt;
+}
+
+.signature-block {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-top: 60px;
+}
+
+.contract-place-date {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.signatures {
+    page-break-inside: avoid;
+    break-inside: avoid;
+} /* Esta chave fecha a regra acima e libera o código abaixo */
+
+.signatures {
+    page-break-inside: avoid;
+    break-inside: avoid;
+} /* Esta chave fecha a regra acima e libera o código abaixo */
+
+/* Efeito visual simples para os campos */
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: #007bff !important; /* Um azul bacana */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25) !important;
+    background-color: #fffdf5 !important; /* Muda levemente o fundo para destacar */
+    transition: all 0.3s ease;
+}
+
+/* Deixa o botão de gerar contrato com um efeito de "aperto" */
+#generateBtn:active {
+    transform: scale(0.98);
+}
+
+
 

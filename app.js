@@ -166,104 +166,113 @@ function buildPrestacaoServicos(d, numeroContrato) {
     const qualContratado = buildQualificacao(d, 'contratado', 'CONTRATADO');
     const n = temConteudo(d.clausulas) ? 9 : 8;/* 01 */
     return `
+<div class="document">
+    <div class="page">
+
         <div class="contract-number">Contrato nº ${d.numeroContrato}</div>
-        <h1>Contrato de Prestação de Serviços</h1>
+            <h1>Contrato de Prestação de Serviços</h1>
 
-        <div class="contract-intro">
-            <p>As partes abaixo qualificadas celebram entre si o presente <strong>Contrato de Prestação de Serviços</strong>,
-            que se regerá pelas cláusulas e condições a seguir estipuladas, em conformidade com o Código Civil Brasileiro
-            (Lei nº 10.406/2002) e demais legislações aplicáveis:</p>
-        </div>
+            <div class="contract-intro">
+                <p>As partes abaixo qualificadas celebram entre si o presente <strong>Contrato de Prestação de Serviços</strong>,
+                que se regerá pelas cláusulas e condições a seguir estipuladas, em conformidade com o Código Civil Brasileiro
+                (Lei nº 10.406/2002) e demais legislações aplicáveis:</p>
+            </div>
 
-        <div class="meta-block">
-            <p class="meta-label">Das Partes</p>
-            <p style="margin-bottom:.8rem"><strong>CONTRATANTE:</strong> ${qualContratante}.</p>
-            <p><strong>CONTRATADO:</strong> ${qualContratado}.</p>
-        </div>
+            <div class="meta-block">
+                <p class="meta-label">Das Partes</p>
+                <p style="margin-bottom:.8rem"><strong>CONTRATANTE:</strong> ${qualContratante}.</p>
+                <p><strong>CONTRATADO:</strong> ${qualContratado}.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 1ª — Do Objeto</p>
-            <p>O presente instrumento tem por objeto a prestação dos seguintes serviços pelo CONTRATADO ao CONTRATANTE:</p>
-            <p class="clause-body-block">${escapeHtml(d.objeto || '')}</p>
-            <p>Os serviços deverão ser executados de acordo com as especificações acordadas entre as partes, com qualidade
-            técnica compatível com o estado da arte da área de atuação do CONTRATADO.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 1ª — Do Objeto</p>
+                <p>O presente instrumento tem por objeto a prestação dos seguintes serviços pelo CONTRATADO ao CONTRATANTE:</p>
+                <p class="clause-body-block">${escapeHtml(d.objeto || '')}</p>
+                <p>Os serviços deverão ser executados de acordo com as especificações acordadas entre as partes, com qualidade
+                técnica compatível com o estado da arte da área de atuação do CONTRATADO.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 2ª — Do Prazo de Execução</p>
-            <p>O prazo para execução e entrega do objeto deste contrato é de <strong>${val(d, 'prazo')}</strong>, contados
-            a partir da data de assinatura deste instrumento. O prazo poderá ser prorrogado, por período equivalente,
-            mediante acordo escrito entre as partes, desde que justificado por motivo de força maior ou por solicitação
-            fundamentada do CONTRATANTE.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 2ª — Do Prazo de Execução</p>
+                <p>O prazo para execução e entrega do objeto deste contrato é de <strong>${val(d, 'prazo')}</strong>, contados
+                a partir da data de assinatura deste instrumento. O prazo poderá ser prorrogado, por período equivalente,
+                mediante acordo escrito entre as partes, desde que justificado por motivo de força maior ou por solicitação
+                fundamentada do CONTRATANTE.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 3ª — Do Valor e da Forma de Pagamento</p>
-            <p>Pela prestação dos serviços ora contratados, o CONTRATANTE pagará ao CONTRATADO ${gerarTextoPagamento(d)}</p>
-            ${d.condicoes && d.condicoes.trim() ? `<p>Condições: ${escapeHtml(d.condicoes)}.</p>` : ''}
-            <p>O não pagamento nos prazos acordados sujeitará o CONTRATANTE à multa moratória de 2% (dois por cento)
-            sobre o valor em aberto, acrescida de juros de 1% (um por cento) ao mês e correção monetária pelo IGPM/FGV.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 3ª — Do Valor e da Forma de Pagamento</p>
+                <p>Pela prestação dos serviços ora contratados, o CONTRATANTE pagará ao CONTRATADO ${gerarTextoPagamento(d)}</p>
+                ${d.condicoes && d.condicoes.trim() ? `<p>Condições: ${escapeHtml(d.condicoes)}.</p>` : ''}
+                <p>O não pagamento nos prazos acordados sujeitará o CONTRATANTE à multa moratória de 2% (dois por cento)
+                sobre o valor em aberto, acrescida de juros de 1% (um por cento) ao mês e correção monetária pelo IGPM/FGV.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 4ª — Das Obrigações do Contratante</p>
-            <p>São obrigações do CONTRATANTE:</p>
-            <p>(i) efetuar os pagamentos nos prazos e condições estipulados neste instrumento;</p>
-            <p>(ii) fornecer ao CONTRATADO, em tempo hábil, todas as informações, materiais, credenciais de acesso e
-            demais insumos necessários à execução dos serviços;</p>
-            <p>(iii) comunicar ao CONTRATADO, de forma imediata e por escrito, quaisquer irregularidades ou
-            insatisfações detectadas durante a prestação dos serviços;</p>
-            <p>(iv) aprovar, por escrito, as entregas parciais ou definitivas em prazo razoável, sob pena de se
-            considerar tacitamente aceitas após 5 (cinco) dias úteis da apresentação.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 4ª — Das Obrigações do Contratante</p>
+                <p>São obrigações do CONTRATANTE:</p>
+                <p>(i) efetuar os pagamentos nos prazos e condições estipulados neste instrumento;</p>
+                <p>(ii) fornecer ao CONTRATADO, em tempo hábil, todas as informações, materiais, credenciais de acesso e
+                demais insumos necessários à execução dos serviços;</p>
+                <p>(iii) comunicar ao CONTRATADO, de forma imediata e por escrito, quaisquer irregularidades ou
+                insatisfações detectadas durante a prestação dos serviços;</p>
+                <p>(iv) aprovar, por escrito, as entregas parciais ou definitivas em prazo razoável, sob pena de se
+                considerar tacitamente aceitas após 5 (cinco) dias úteis da apresentação.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 5ª — Das Obrigações do Contratado</p>
-            <p>São obrigações do CONTRATADO:</p>
-            <p>(i) executar os serviços com diligência, competência técnica e dentro do prazo acordado;</p>
-            <p>(ii) manter absoluto sigilo sobre todas as informações confidenciais obtidas em razão deste contrato,
-            durante sua vigência e por 2 (dois) anos após seu encerramento;</p>
-            <p>(iii) comunicar prontamente ao CONTRATANTE qualquer impedimento técnico ou circunstância que possa
-            comprometer o cumprimento do prazo ou da qualidade dos serviços;</p>
-            <p>(iv) responsabilizar-se pelos impostos, contribuições previdenciárias e demais encargos decorrentes
-            de sua atividade profissional autônoma.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 5ª — Das Obrigações do Contratado</p>
+                <p>São obrigações do CONTRATADO:</p>
+                <p>(i) executar os serviços com diligência, competência técnica e dentro do prazo acordado;</p>
+                <p>(ii) manter absoluto sigilo sobre todas as informações confidenciais obtidas em razão deste contrato,
+                durante sua vigência e por 2 (dois) anos após seu encerramento;</p>
+                <p>(iii) comunicar prontamente ao CONTRATANTE qualquer impedimento técnico ou circunstância que possa
+                comprometer o cumprimento do prazo ou da qualidade dos serviços;</p>
+                <p>(iv) responsabilizar-se pelos impostos, contribuições previdenciárias e demais encargos decorrentes
+                de sua atividade profissional autônoma.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 6ª — Da Propriedade Intelectual</p>
-            <p>Todo e qualquer produto intelectual criado pelo CONTRATADO no âmbito deste contrato — incluindo, mas não
-            se limitando a, documentos, códigos-fonte, artes, relatórios e demais materiais — será de propriedade
-            exclusiva do CONTRATANTE após a quitação integral do valor contratado, salvo disposição em contrário
-            estabelecida por escrito pelas partes.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 6ª — Da Propriedade Intelectual</p>
+                <p>Todo e qualquer produto intelectual criado pelo CONTRATADO no âmbito deste contrato — incluindo, mas não
+                se limitando a, documentos, códigos-fonte, artes, relatórios e demais materiais — será de propriedade
+                exclusiva do CONTRATANTE após a quitação integral do valor contratado, salvo disposição em contrário
+                estabelecida por escrito pelas partes.</p>
+            </div>
 
-        <div class="clause">
-            <p class="clause-title">Cláusula 7ª — Da Rescisão</p>
-            <p>O presente contrato poderá ser rescindido por qualquer das partes mediante notificação prévia por
-            escrito com antecedência mínima de 15 (quinze) dias. Em caso de rescisão sem justa causa pelo
-            CONTRATANTE, será devida ao CONTRATADO a remuneração proporcional aos serviços já executados,
-            acrescida de multa de 20% (vinte por cento) sobre o valor total remanescente. Em caso de
-            inadimplemento pelo CONTRATADO, poderá o CONTRATANTE exigir restituição dos valores pagos
-            antecipadamente, além de perdas e danos.</p>
-        </div>
+            <div class="clause">
+                <p class="clause-title">Cláusula 7ª — Da Rescisão</p>
+                <p>O presente contrato poderá ser rescindido por qualquer das partes mediante notificação prévia por
+                escrito com antecedência mínima de 15 (quinze) dias. Em caso de rescisão sem justa causa pelo
+                CONTRATANTE, será devida ao CONTRATADO a remuneração proporcional aos serviços já executados,
+                acrescida de multa de 20% (vinte por cento) sobre o valor total remanescente. Em caso de
+                inadimplemento pelo CONTRATADO, poderá o CONTRATANTE exigir restituição dos valores pagos
+                antecipadamente, além de perdas e danos.</p>
+            </div>
 
-        ${temConteudo(d.clausulas) ? `
-        <div class="clause">
-            <p class="clause-title">Cláusula 8ª — Disposições Adicionais</p>
-            <p>${escapeHtml(d.clausulas)}</p>
-        </div>` : ''}
+            <div class="final-block">
 
-        <div class="clause">
-            <p class="clause-title">Cláusula ${n}ª — Do Foro</p>
-            <p>As partes elegem, de comum acordo, o foro da Comarca de <strong>${val(d, 'local')}</strong> para dirimir
-            quaisquer dúvidas, controvérsias ou litígios decorrentes do presente contrato, com renúncia expressa
-            a qualquer outro foro, por mais privilegiado que seja.</p>
-        </div>
+                ${temConteudo(d.clausulas) ? `
+                    <div class="clause">
+                        <p class="clause-title">Cláusula 8ª — Disposições Adicionais</p>
+                        <p>${escapeHtml(d.clausulas)}</p>
+                    </div>` : ''}
 
-        <p class="contract-place-date">${val(d, 'local')}, ${formatDate(d.data)}.</p>
+                <div class="clause">
+                    <p class="clause-title">Cláusula ${n}ª — Do Foro</p>
+                    <p>As partes elegem, de comum acordo, o foro da Comarca de <strong>${val(d, 'local')}</strong>...</p>
+                </div>
 
-        ${buildSignatures(d, 'CONTRATANTE', 'CONTRATADO', 'contratante', 'contratado')}
-    `;
+                <p class="contract-place-date">
+                    ${val(d, 'local')}, ${formatDate(d.data)}.
+                </p>
+
+                ${buildSignatures(d, 'CONTRATANTE', 'CONTRATADO', 'contratante', 'contratado')}
+
+            </div> <!-- final-block -->
+    </div> <!-- page -->
+</div> <!-- document -->
+`;
 }
 
 // ================================================================
@@ -277,9 +286,13 @@ function buildCompraVenda(d) {
     const estadoBem = d.estado_bem ? d.estado_bem.trim() : '';
     const localEntrega = d.local_entrega && d.local_entrega.trim() ? d.local_entrega.trim() : val(d, 'local');
 
-    return `
-        <div class="contract-number">Contrato nº ${d.numeroContrato}</div>
-        <h1>Contrato de Compra e Venda</h1>
+    
+        return `
+        <div class="document">
+            <div class="page">
+
+                <div class="contract-number">Contrato nº ${d.numeroContrato}</div>
+                <h1>Contrato de Compra e Venda</h1>
 
         <div class="contract-intro">
             <p>As partes abaixo qualificadas celebram entre si o presente <strong>Contrato de Compra e Venda</strong>,
@@ -375,7 +388,9 @@ function buildCompraVenda(d) {
         <p class="contract-place-date">${val(d, 'local')}, ${formatDate(d.data)}.</p>
 
         ${buildSignatures(d, 'COMPRADOR', 'VENDEDOR', 'contratante', 'contratado')}
-    `;
+                </div>
+        </div>
+`;
 }
 
 function buildContractHTML(d) {
@@ -391,29 +406,33 @@ function buildSignatures(d, roleA, roleB, prefixA, prefixB) {
     const nomeB = d[prefixB + '_nome'] || "___________________________";
 
     return `
-        <div class="signatures-wrapper">
-            <div class="sig-line-container">
-                <div class="sig-line"></div>
-                <div class="sig-name">${nomeA}</div>
-                <div class="sig-role">${roleA}</div>
+        <div class="signatures" style="margin-top: 50px !important;">
+            <div style="display: flex !important; flex-direction: row !important; justify-content: space-between !important; width: 100% !important; gap: 40px !important; margin-bottom: 40px !important;">
+                
+                <div style="flex: 1 !important; text-align: center !important;">
+                    <div style="border-top: 1px solid #000 !important; width: 100% !important; margin-bottom: 5px !important;"></div>
+                    <div style="font-weight: bold !important; text-transform: uppercase !important;">${nomeA}</div>
+                    <div style="font-size: 0.85rem !important;">${roleA}</div>
+                </div>
+
+                <div style="flex: 1 !important; text-align: center !important;">
+                    <div style="border-top: 1px solid #000 !important; width: 100% !important; margin-bottom: 5px !important;"></div>
+                    <div style="font-weight: bold !important; text-transform: uppercase !important;">${nomeB}</div>
+                    <div style="font-size: 0.85rem !important;">${roleB}</div>
+                </div>
+
             </div>
 
-            <div class="sig-line-container">
-                <div class="sig-line"></div>
-                <div class="sig-name">${nomeB}</div>
-                <div class="sig-role">${roleB}</div>
-            </div>
-
-            <div style="margin-top: 20px;">
-                <p><strong>Testemunhas:</strong></p>
-                <div style="display: flex; justify-content: space-between; margin-top: 40px;">
-                    <div style="width: 45%; text-align: center;">
-                        <div style="border-top: 1px solid #000; margin-bottom: 5px;"></div>
-                        <p style="font-size: 0.8rem;">Nome e CPF</p>
+            <div style="margin-top: 30px !important;">
+                <p style="font-weight: bold !important; margin-bottom: 25px !important;">Testemunhas:</p>
+                <div style="display: flex !important; justify-content: space-between !important; width: 100% !important; gap: 40px !important;">
+                    <div style="flex: 1 !important; text-align: center !important;">
+                        <div style="border-top: 1px solid #000 !important; width: 100% !important; margin-bottom: 5px !important;"></div>
+                        <p style="font-size: 0.8rem !important;">Nome e CPF</p>
                     </div>
-                    <div style="width: 45%; text-align: center;">
-                        <div style="border-top: 1px solid #000; margin-bottom: 5px;"></div>
-                        <p style="font-size: 0.8rem;">Nome e CPF</p>
+                    <div style="flex: 1 !important; text-align: center !important;">
+                        <div style="border-top: 1px solid #000 !important; width: 100% !important; margin-bottom: 5px !important;"></div>
+                        <p style="font-size: 0.8rem !important;">Nome e CPF</p>
                     </div>
                 </div>
             </div>
@@ -572,13 +591,40 @@ form.querySelectorAll('input, textarea, select').forEach(el => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!validateForm(form)) {
-        const firstInvalid = form.querySelector('.invalid');
-        if (firstInvalid) firstInvalid.focus();
-        return;
+
+    // --- NOVO BLOCO DE VALIDAÇÃO COM ALERTA ---
+    const camposObrigatorios = [
+        { id: 'contratante_nome', nome: 'Nome do Contratante' },
+        { id: 'contratado_nome', nome: 'Nome do Contratado' },
+        { id: 'objeto', nome: 'Objeto/Descrição do Bem' },
+        { id: 'local', nome: 'Cidade/Foro' }
+    ];
+
+    let erros = [];
+    camposObrigatorios.forEach(campo => {
+        const el = document.getElementById(campo.id);
+        // Verifica se o campo existe e se está vazio
+        if (!el || !el.value.trim()) {
+            erros.push(campo.nome);
+            if (el) el.style.border = '2px solid #ff4444'; // Marca de vermelho
+        } else {
+            if (el) el.style.border = ''; // Limpa a borda se preenchido
+        }
+    });
+
+    if (erros.length > 0) {
+        alert("Atenção! Faltam os seguintes dados:\n\n- " + erros.join('\n- '));
+        
+        // Foca no primeiro campo com erro para facilitar a vida do usuário
+        const primeiroErro = document.getElementById(camposObrigatorios.find(c => !document.getElementById(c.id)?.value.trim())?.id);
+        if (primeiroErro) primeiroErro.focus();
+        
+        return; // Para tudo aqui e não gera o contrato
     }
+    // --- FIM DO NOVO BLOCO ---
 
     const total = document.getElementById('valor')?.value;
+    // ... o resto do seu código continua igual daqui para baixo ...
     const entrada = document.getElementById('valor_entrada')?.value;
 
     const limpar = (val) => parseFloat(val.replace(/\D/g, "")) / 100 || 0;
@@ -973,4 +1019,10 @@ function gerarNumeroContrato() {
 
     return `${ano}${mes}${dia}-${aleatorio}`;
 }
+
+document.getElementById('generateBtn').addEventListener('click', function () {
+    form.requestSubmit();
+});
+
+
 
