@@ -537,6 +537,17 @@ form.addEventListener('submit', (e) => {
         if (firstInvalid) firstInvalid.focus();
         return;
     }
+
+    const total = document.getElementById('valor')?.value;
+    const entrada = document.getElementById('valor_entrada')?.value;
+
+    const limpar = (val) => parseFloat(val.replace(/\D/g, "")) / 100 || 0;
+
+    if (limpar(entrada) > limpar(total)) {
+        alert('Erro: entrada maior que o valor total.');
+        return;
+    }
+
     const data = collectData(form);
     contractOutput.innerHTML = buildContractHTML(data);
     previewSection.hidden = false;
@@ -820,6 +831,14 @@ function executarCalculo() {
 
     // Cálculo final
     const base = total - entrada;
+
+        // Validação crítica
+    if (entrada > total) {
+        alert('A entrada não pode ser maior que o valor total.');
+        document.getElementById('valor_entrada').value = "";
+        elResultado.value = "";
+        return;
+    }
 
     // Proteção contra valores inválidos
     if (base <= 0) {
