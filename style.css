@@ -200,6 +200,10 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+.form-section-header + * {
+    margin-top: 1.5rem;
+}
+
 .form-section-block:nth-of-type(1) .form-section-header {
     border-left: 4px solid var(--section-1);
 }
