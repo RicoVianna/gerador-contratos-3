@@ -868,7 +868,36 @@ h3.preview-title {
         width: 100% !important; /* Cada botão vira uma linha inteira no celular */
         margin-bottom: 5px;
     }
-}
+
+    /* 10. CORREÇÃO DO CONTRATO ESPREMIDO (Adicione isso aqui) */
+    #contractOutput {
+        padding: 10px !important; /* Devolve espaço para o texto */
+        font-size: 14px !important; /* Evita quebra de palavras como CONTRAT-O */
+        line-height: 1.4 !important;
+    }
+
+    /* 11. AJUSTE DE TÍTULOS NO CELULAR */
+    #contractOutput h1, 
+    #contractOutput h2, 
+    #contractOutput h3, 
+    #contractOutput center {
+        font-size: 18px !important;
+        word-wrap: normal !important;
+        white-space: normal !important;
+    }
+} /* <--- ESSA É A CHAVE QUE FECHA O MEDIA, NÃO APAGUE ELA */
+
+    /* O código de BASE que te mandei antes fica fora do media, no final do arquivo: */
+    #contractOutput {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        background: #fff;
+        margin: 0 auto;
+        overflow-x: hidden;
+    }
+
 
 .header-inner a {
     font-size: 1.2rem;
