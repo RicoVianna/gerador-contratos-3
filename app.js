@@ -1024,5 +1024,24 @@ document.getElementById('generateBtn').addEventListener('click', function () {
     form.requestSubmit();
 });
 
+const backToTopBtn = document.getElementById("backToTop");
+
+// Quando o usuário descer 300px da página, mostra o botão
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+// Quando clicar, sobe suavemente
+backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
 
 

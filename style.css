@@ -1041,5 +1041,26 @@ input:focus, textarea:focus, select:focus {
     transform: scale(0.98);
 }
 
+#backToTop {
+    display: none; /* Começa escondido */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #007bff; /* Mesmo azul do seu botão de gerar */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Deixa redondinho */
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
 
-
+#backToTop:hover {
+    background-color: #0056b3; /* Escurece um pouco no hover */
+    transform: scale(1.1);
+}
