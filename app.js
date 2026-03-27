@@ -544,8 +544,8 @@ function applyTipo(tipo) {
     if (isCV) {
         wrapObjeto.style.display = 'none';
         
-        // ESTA LINHA É A ÚNICA QUE IMPORTA:
-        // Ela força o display e o espaço de 35px no topo
+        // Garante que o campo de descrição do Bem apareça na tela
+        wrapBem.style.display = 'block'; 
         wrapBem.classList.add('ativo');
         
         wrapBemEstado.style.display = '';
@@ -555,7 +555,8 @@ function applyTipo(tipo) {
     } else {
         wrapObjeto.style.display = '';
         
-        // Quando volta para serviços, removemos o espaço extra
+        // Esconde o campo de descrição do Bem ao voltar para Serviços
+        wrapBem.style.display = 'none';
         wrapBem.classList.remove('ativo');
         
         wrapBemEstado.style.display = 'none';
@@ -564,6 +565,7 @@ function applyTipo(tipo) {
         estadoBem.removeAttribute('required');
     }
 }
+
 tipoSelect.addEventListener('change', () => applyTipo(tipoSelect.value));
 
 // Set today's date as default
@@ -592,42 +594,46 @@ form.querySelectorAll('input, textarea, select').forEach(el => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // --- NOVO BLOCO DE VALIDAÇÃO COM ALERTA ---
+    // --- NOVO BLOCO DE VALIDAÇÃO REVISADO ---
+    // Busca o seletor de tipo de forma segura para não travar o código
+    const seletorTipo = document.getElementById('tipo_contrato') || document.getElementById('tipoSelect');
+    const valorTipo = seletorTipo ? seletorTipo.value : '';
+
+    // Define qual campo de descrição validar com base no tipo de contrato
+    const idDescricao = (valorTipo === 'compravenda') ? 'bem_descricao' : 'objeto';
+    const nomeDescricao = (valorTipo === 'compravenda') ? 'Descrição do Bem' : 'Objeto dos Serviços';
+
     const camposObrigatorios = [
-        { id: 'contratante_nome', nome: 'Nome do Contratante' },
-        { id: 'contratado_nome', nome: 'Nome do Contratado' },
-        { id: 'objeto', nome: 'Objeto/Descrição do Bem' },
+        { id: 'contratante_nome', nome: 'Nome das Partes' },
+        { id: 'contratado_nome', nome: 'Nome das Partes' },
+        { id: idDescricao, nome: nomeDescricao },
         { id: 'local', nome: 'Cidade/Foro' }
     ];
 
     let erros = [];
     camposObrigatorios.forEach(campo => {
         const el = document.getElementById(campo.id);
-        // Verifica se o campo existe e se está vazio
         if (!el || !el.value.trim()) {
             erros.push(campo.nome);
-            if (el) el.style.border = '2px solid #ff4444'; // Marca de vermelho
+            if (el) el.style.border = '2px solid #ff4444';
         } else {
-            if (el) el.style.border = ''; // Limpa a borda se preenchido
+            if (el) el.style.border = '';
         }
     });
 
     if (erros.length > 0) {
         alert("Atenção! Faltam os seguintes dados:\n\n- " + erros.join('\n- '));
-        
-        // Foca no primeiro campo com erro para facilitar a vida do usuário
-        const primeiroErro = document.getElementById(camposObrigatorios.find(c => !document.getElementById(c.id)?.value.trim())?.id);
-        if (primeiroErro) primeiroErro.focus();
-        
-        return; // Para tudo aqui e não gera o contrato
+        const primeiroIdInvalido = camposObrigatorios.find(c => !document.getElementById(c.id)?.value.trim())?.id;
+        const campoFocar = document.getElementById(primeiroIdInvalido);
+        if (campoFocar) campoFocar.focus();
+        return; 
     }
-    // --- FIM DO NOVO BLOCO ---
+    // --- FIM DO BLOCO DE VALIDAÇÃO ---
 
-    const total = document.getElementById('valor')?.value;
-    // ... o resto do seu código continua igual daqui para baixo ...
-    const entrada = document.getElementById('valor_entrada')?.value;
+    const total = document.getElementById('valor')?.value || "0";
+    const entrada = document.getElementById('valor_entrada')?.value || "0";
 
-    const limpar = (val) => parseFloat(val.replace(/\D/g, "")) / 100 || 0;
+    const limpar = (val) => parseFloat(String(val).replace(/\D/g, "")) / 100 || 0;
 
     if (limpar(entrada) > limpar(total)) {
         alert('Erro: entrada maior que o valor total.');
