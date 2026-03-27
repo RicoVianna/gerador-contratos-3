@@ -1049,5 +1049,29 @@ backToTopBtn.addEventListener("click", function() {
     });
 });
 
+function ajustarLarguraContratoMobile() {
+    // Só executa se for celular (largura menor que 600)
+    if (window.innerWidth <= 600) {
+        const previewArea = document.getElementById('previewSection');
+        const contractDiv = document.getElementById('contractOutput');
+        
+        if (previewArea) {
+            // Força a classe de largura total
+            previewArea.classList.add('force-full-width');
+            
+            // "Limpa o caminho" removendo margens de todos os pais
+            let pai = previewArea.parentElement;
+            while (pai && pai.tagName !== 'BODY') {
+                pai.style.paddingLeft = '0';
+                pai.style.paddingRight = '0';
+                pai.style.marginLeft = '0';
+                pai.style.marginRight = '0';
+                pai.style.maxWidth = '100%';
+                pai = pai.parentElement;
+            }
+        }
+    }
+}
+
 
 
