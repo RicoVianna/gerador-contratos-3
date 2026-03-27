@@ -1064,3 +1064,28 @@ input:focus, textarea:focus, select:focus {
     background-color: #0056b3; /* Escurece um pouco no hover */
     transform: scale(1.1);
 }
+
+/* Estilo profissional para o ícone do PWA no iPhone */
+.pwa-icon {
+    display: block;
+    margin: 0 auto;
+    width: 512px;
+    height: 512px;
+    background-color: #007bff; /* SEU AZUL VIBRANTE EXATO */
+    border-radius: 20%; /* Canto arredondado do iOS */
+    padding: 60px; /* Margem de respiro para o ícone branco */
+    filter: invert(100%); /* A MÁGICA: Inverte o desenho PRETO para BRANCO */
+}
+
+/* Isso garante que o ícone preto fique branco sobre o fundo azul vibrante */
+
+[rel="apple-touch-icon"] {
+    display: block;
+    margin: 0 auto;
+    width: 512px;
+    height: 512px;
+    background-color: #007bff; /* SEU AZUL VIBRANTE EXATO */
+    border-radius: 20%; /* Canto arredondado do iOS */
+    padding: 60px; /* Margem de respiro para o ícone branco */
+    filter: invert(100%); /* A MÁGICA: Inverte o desenho PRETO para BRANCO */
+}
