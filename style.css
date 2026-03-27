@@ -1089,3 +1089,27 @@ input:focus, textarea:focus, select:focus {
     padding: 60px; /* Margem de respiro para o ícone branco */
     filter: invert(100%); /* A MÁGICA: Inverte o desenho PRETO para BRANCO */
 }
+
+/* --- AJUSTE DE RESPONSIVIDADE PARA O CONTRATO (FORA DO MEDIA PRINT) --- */
+#contractOutput {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    padding: 20px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+#contractOutput * {
+    visibility: visible;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+#previewSection {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
