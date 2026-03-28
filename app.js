@@ -1086,7 +1086,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            splash.style.display = 'none';
+            splash.style.opacity = '0';
+
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 400);
         });
     }
 });
@@ -1109,15 +1113,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Clique no botão
-    startBtn.addEventListener('click', () => {
+    startBtn.addEventListener('click', function(e) {
 
-        if (!checkbox.checked) {
-            alert('Você precisa aceitar os termos para continuar.');
-            return;
-        }
+        if (navigator.vibrate) {
+        navigator.vibrate(30); // vibra por 30ms
+}
 
-        splash.style.display = 'none';
+    // RIPPLE
+    const rect = this.getBoundingClientRect();
+
+    const circle = document.createElement('span');
+    const diameter = Math.max(this.clientWidth, this.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - rect.left - radius}px`;
+    circle.style.top = `${e.clientY - rect.top - radius}px`;
+    circle.classList.add('ripple');
+
+    const ripple = this.querySelector('.ripple');
+    if (ripple) ripple.remove();
+
+    this.appendChild(circle);
+
+    // VALIDAÇÃO
+    if (!checkbox.checked) {
+        alert('Você precisa aceitar os termos para continuar.');
+        return;
+    }
+
+    // 👇 DELAY PARA O RIPPLE APARECER
+        setTimeout(() => {
+
+            splash.style.opacity = '0';
+
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 400);
+
+        }, 200);
+
     });
 
 });
