@@ -1073,5 +1073,23 @@ function ajustarLarguraContratoMobile() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const splash = document.getElementById('splashScreen');
+    const btn = document.getElementById('startAppBtn');
+    const check = document.getElementById('acceptTerms');
+
+    if (btn && splash && check) {
+        btn.addEventListener('click', () => {
+
+            if (!check.checked) {
+                alert("Você precisa aceitar os termos para continuar.");
+                return;
+            }
+
+            splash.style.display = 'none';
+        });
+    }
+});
+
 
 
