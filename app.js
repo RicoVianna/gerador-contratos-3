@@ -1090,6 +1090,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(() => {
                 splash.style.display = 'none';
+
+                // 👇 ATIVA O APP COM ANIMAÇÃO
+                app.classList.add('active');
+
             }, 400);
         });
     }
