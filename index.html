@@ -48,131 +48,65 @@
                 Este sistema não substitui um advogado.
             </div>
 
-</div>
+        </div>
 
+        <div id="appWrapper">
+            <header class="app-header">
+                <div class="header-inner">
+                    <a href="index.html" style="text-decoration: none; margin-right: 12px; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.4); padding: 3px 8px; border-radius: 4px;">Novo</a>     
+                    <span class="logo">ContratoFácil</span>
+                    <span class="badge">PWA</span>
+                </div>
+            </header>
 
-        <header class="app-header">
-    <div class="header-inner">
-        <a href="index.html" style="text-decoration: none; margin-right: 12px; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.4); padding: 3px 8px; border-radius: 4px;">Novo</a>     
-        <span class="logo">ContratoFácil</span>
-        <span class="badge">PWA</span>
-    </div>
-</header>
+            <main class="main-content">
+                <section class="form-section card">
+                    <h2 class="section-title">Dados do Contrato</h2>
 
-        <main class="main-content">
-            <section class="form-section card">
-                <h2 class="section-title">Dados do Contrato</h2>
+                    <form id="contractForm" novalidate>
 
-                <form id="contractForm" novalidate>
-
-                    <div class="tipo-selector-block">
-                        <div class="tipo-icon" id="tipoIcon">⚙️</div>
-                        <div class="tipo-content">
-                            <label class="tipo-label" for="tipo_contrato">Tipo de Contrato</label>
-                            <p class="tipo-hint">Escolha o tipo para adaptar os campos e o texto gerado automaticamente.</p>
-                        </div>
-                        <select id="tipo_contrato" name="tipo_contrato" class="tipo-select" required>
-                            <option value="" disabled selected>— Escolha o Tipo de Contrato —</option>
-                            <option value="servicos">Prestação de Serviços</option>
-                            <option value="compravenda">Compra e Venda</option>
-                        </select>
-                    </div>
-
-                    <div class="form-section-block">
-                        <div class="form-section-header">
-                            <span class="form-section-number">1</span>
-                            <span class="form-section-label">Dados das Partes</span>
+                        <div class="tipo-selector-block">
+                            <div class="tipo-icon" id="tipoIcon">⚙️</div>
+                            <div class="tipo-content">
+                                <label class="tipo-label" for="tipo_contrato">Tipo de Contrato</label>
+                                <p class="tipo-hint">Escolha o tipo para adaptar os campos e o texto gerado automaticamente.</p>
+                            </div>
+                            <select id="tipo_contrato" name="tipo_contrato" class="tipo-select" required>
+                                <option value="" disabled selected>— Escolha o Tipo de Contrato —</option>
+                                <option value="servicos">Prestação de Serviços</option>
+                                <option value="compravenda">Compra e Venda</option>
+                            </select>
                         </div>
 
-                        <div class="form-grid">
+                        <div class="form-section-block">
+                            <div class="form-section-header">
+                                <span class="form-section-number">1</span>
+                                <span class="form-section-label">Dados das Partes</span>
+                            </div>
 
-                            <div class="form-sides-wrapper">
-                                <fieldset class="fieldset" id="fieldsetA">
-                                    <legend id="legendA">Contratante</legend>
-                                    <div class="form-group">
-                                        <label id="labelNomeA" for="contratante_nome">Nome / Razão Social *</label>
-                                        <input type="text" id="contratante_nome" name="contratante_nome" placeholder="João da Silva" required />
-                                    </div>
+                            <div class="form-grid">
+
+                                <div class="form-sides-wrapper">
+                                    <fieldset class="fieldset" id="fieldsetA">
+                                        <legend id="legendA">Contratante</legend>
+                                        <div class="form-group">
+                                            <label id="labelNomeA" for="contratante_nome">Nome / Razão Social *</label>
+                                            <input type="text" id="contratante_nome" name="contratante_nome" placeholder="João da Silva" required />
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratante_nacionalidade">Nacionalidade</label>
+                                                <input type="text" id="contratante_nacionalidade" name="contratante_nacionalidade" placeholder="brasileiro(a)" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratante_profissao">Profissão</label>
+                                                <input type="text" id="contratante_profissao" name="contratante_profissao" placeholder="Engenheiro(a)" />
+                                            </div>
+                                        </div>
                                     <div class="form-row-inner">
                                         <div class="form-group">
-                                            <label for="contratante_nacionalidade">Nacionalidade</label>
-                                            <input type="text" id="contratante_nacionalidade" name="contratante_nacionalidade" placeholder="brasileiro(a)" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="contratante_profissao">Profissão</label>
-                                            <input type="text" id="contratante_profissao" name="contratante_profissao" placeholder="Engenheiro(a)" />
-                                        </div>
-                                    </div>
-                                <div class="form-row-inner">
-                                    <div class="form-group">
-                                        <label for="contratante_estado_civil">Estado Civil</label>
-                                        <select id="contratante_estado_civil" name="contratante_estado_civil">
-                                            <option value="">Selecione</option>
-                                            <option value="solteiro(a)">Solteiro(a)</option>
-                                            <option value="casado(a)">Casado(a)</option>
-                                            <option value="divorciado(a)">Divorciado(a)</option>
-                                            <option value="viúvo(a)">Viúvo(a)</option>
-                                            <option value="em união estável">União Estável</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contratante_rg">RG</label>
-                                        <input type="text" id="contratante_rg" name="contratante_rg" class="mask-rg" placeholder="00.000.000-0" required />
-                                    </div>
-                                </div>
-                                    <div class="form-group">
-                                        <label for="contratante_cpf">CPF / CNPJ *</label>
-                                        <input type="text" id="contratante_cpf" name="contratante_cpf" class="mask-cpf-cnpj" placeholder="000.000.000-00" required />
-                                    </div>
-                                    <div class="form-row-inner">
-                                        <div class="form-group">
-                                            <label for="contratante_cep">CEP *</label>
-                                            <input type="text" id="contratante_cep" name="contratante_cep" placeholder="00000-000" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="contratante_numero">Número *</label>
-                                            <input type="text" id="contratante_numero" name="contratante_numero" placeholder="123" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contratante_rua">Rua</label>
-                                        <input type="text" id="contratante_rua" name="contratante_rua" placeholder="Nome da rua">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contratante_bairro">Bairro</label>
-                                        <input type="text" id="contratante_bairro" name="contratante_bairro" placeholder="Bairro">
-                                    </div>
-                                    <div class="form-row-inner">
-                                        <div class="form-group">
-                                            <label for="contratante_cidade">Cidade</label>
-                                            <input type="text" id="contratante_cidade" name="contratante_cidade" placeholder="Cidade">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="contratante_estado">UF</label>
-                                            <input type="text" id="contratante_estado" name="contratante_estado" placeholder="SP">
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="fieldset" id="fieldsetB">
-                                    <legend id="legendB">Contratado</legend>
-                                    <div class="form-group">
-                                        <label id="labelNomeB" for="contratado_nome">Nome / Razão Social *</label>
-                                        <input type="text" id="contratado_nome" name="contratado_nome" placeholder="Maria Oliveira" required />
-                                    </div>
-                                    <div class="form-row-inner">
-                                        <div class="form-group">
-                                            <label for="contratado_nacionalidade">Nacionalidade</label>
-                                            <input type="text" id="contratado_nacionalidade" name="contratado_nacionalidade" placeholder="brasileiro(a)" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="contratado_profissao">Profissão</label>
-                                            <input type="text" id="contratado_profissao" name="contratado_profissao" placeholder="Designer" />
-                                        </div>
-                                    </div>
-                                    <div class="form-row-inner">
-                                        <div class="form-group">
-                                            <label for="contratado_estado_civil">Estado Civil</label>
-                                            <select id="contratado_estado_civil" name="contratado_estado_civil">
+                                            <label for="contratante_estado_civil">Estado Civil</label>
+                                            <select id="contratante_estado_civil" name="contratante_estado_civil">
                                                 <option value="">Selecione</option>
                                                 <option value="solteiro(a)">Solteiro(a)</option>
                                                 <option value="casado(a)">Casado(a)</option>
@@ -182,200 +116,267 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contratado_rg">RG</label>
-                                            <input type="text" id="contratado_rg" name="contratado_rg" class="mask-rg" placeholder="00.000.000-0" required />
+                                            <label for="contratante_rg">RG</label>
+                                            <input type="text" id="contratante_rg" name="contratante_rg" class="mask-rg" placeholder="00.000.000-0" required />
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="contratado_cpf">CPF / CNPJ *</label>
-                                        <input type="text" id="contratado_cpf" name="contratado_cpf" class="mask-cpf-cnpj" placeholder="000.000.000-00" required />
-                                    </div>
-                                    <div class="form-row-inner">
                                         <div class="form-group">
-                                            <label for="contratado_cep">CEP *</label>
-                                            <input type="text" id="contratado_cep" name="contratado_cep" placeholder="00000-000" required>
+                                            <label for="contratante_cpf">CPF / CNPJ *</label>
+                                            <input type="text" id="contratante_cpf" name="contratante_cpf" class="mask-cpf-cnpj" placeholder="000.000.000-00" required />
                                         </div>
-                                        <div class="form-group">
-                                            <label for="contratado_numero">Número *</label>
-                                            <input type="text" id="contratado_numero" name="contratado_numero" placeholder="123" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contratado_rua">Rua</label>
-                                        <input type="text" id="contratado_rua" name="contratado_rua" placeholder="Nome da rua">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contratado_bairro">Bairro</label>
-                                        <input type="text" id="contratado_bairro" name="contratado_bairro" placeholder="Bairro">
-                                    </div>
-                                    <div class="form-row-inner">
-                                        <div class="form-group">
-                                            <label for="contratado_cidade">Cidade</label>
-                                            <input type="text" id="contratado_cidade" name="contratado_cidade" placeholder="Cidade">
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratante_cep">CEP *</label>
+                                                <input type="text" id="contratante_cep" name="contratante_cep" placeholder="00000-000" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratante_numero">Número *</label>
+                                                <input type="text" id="contratante_numero" name="contratante_numero" placeholder="123" required>
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contratado_estado">UF</label>
-                                            <input type="text" id="contratado_estado" name="contratado_estado" placeholder="SP">
+                                            <label for="contratante_rua">Rua</label>
+                                            <input type="text" id="contratante_rua" name="contratante_rua" placeholder="Nome da rua">
                                         </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section-block">
-                        <div class="form-section-header">
-                            <span class="form-section-number">2</span>
-                            <span class="form-section-label" id="labelSecao2">Objeto e Valores</span>
-                        </div>
-
-                        <div class="form-group ps-field" id="wrapObjeto">
-                            <label for="objeto" id="labelObjeto">Descrição detalhada do serviço *</label>
-                            <textarea id="objeto" name="objeto" rows="4" placeholder="Descreva detalhadamente o serviço a ser prestado, incluindo escopo, entregas e especificações técnicas..." required></textarea>
-                        </div>
-
-                        <div class="form-group cv-field" id="wrapBem" style="display:none; padding-top: 35px !important;">
-                            <label for="bem_descricao" style="display: block; margin-bottom: 8px;">Descrição do bem / objeto da venda *</label>
-                            <textarea id="bem_descricao" name="bem_descricao" rows="3" placeholder="Descreva o bem..."></textarea>
-                        </div>
-
-                        <div class="form-row cv-field" id="wrapBemEstado" style="display:none">
-                            <div class="form-group">
-                                <label for="estado_bem">Estado de conservação *</label>
-                                <select id="estado_bem" name="estado_bem">
-                                    <option value="">— Selecione —</option>
-                                    <option value="Novo">Novo</option>
-                                    <option value="Seminovo">Seminovo</option>
-                                    <option value="Usado">Usado</option>
-                                    <option value="Recondicionado">Recondicionado</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="local_entrega">Local de entrega / transferência</label>
-                                <input type="text" id="local_entrega" name="local_entrega" placeholder="Endereço de entrega do bem" />
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="valor">Valor total (R$) *</label>
-                                <input type="text" id="valor" name="valor" class="mask-money" placeholder="0,00" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="forma_pagamento">Forma de pagamento *</label>
-                                <select id="forma_pagamento" name="forma_pagamento" required>
-                                    <option value="">— Selecione —</option>
-                                    <option value="avista">À vista</option>
-                                    <option value="aprazo">À prazo</option>
-                                    <option value="parcelado">Parcelado</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div id="wrapper_avista" style="display:none; margin-bottom: 15px;" class="form-group">
-                            <label>Tipo de pagamento à vista</label>
-                            <select id="detalhe_avista" name="detalhe_avista">
-                                <option value="pix_ted">1 - Pix / TED</option>
-                                <option value="dinheiro">2 - Dinheiro</option>
-                                <option value="cheque">3 - Cheque</option>
-                            </select>
-                        </div>
-
-                        <div id="wrapper_aprazo" style="display:none; margin-bottom: 15px;" class="form-group">
-                            <label>Data do Cheque Pré-datado/boleto</label>
-                            <input type="date" id="data_cheque" name="data_cheque">
-                        </div>
-
-                        <div id="wrapper_parcelado" style="display:none; background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                            <div class="form-group">
-                                <label>Tipo de Parcelamento</label>
-                                <select id="tipo_parcelamento" name="tipo_parcelamento">
-                                    <option value="com_entrada">1 - Com entrada</option>
-                                    <option value="parcelas_iguais">2 - Parcelas iguais</option>
-                                </select>
-                            </div>
-
-                            <div class="form-row-inner" style="display: flex; gap: 10px; margin-bottom: 10px;">
-                                <div id="col_entrada" class="form-group" style="flex: 1;">
-                                    <label>Valor da Entrada (R$)</label>
-                                    <input type="text" id="valor_entrada" name="valor_entrada" class="mask-money" placeholder="0,00">
-                                </div>
-                                
-                                <div class="form-group" style="flex: 1;">
-                                    <label>Qtd. Parcelas (1-12)</label>
-                                    <input type="number" id="qtd_parcelas" name="qtd_parcelas" min="1" max="12" value="1">
+                                        <div class="form-group">
+                                            <label for="contratante_bairro">Bairro</label>
+                                            <input type="text" id="contratante_bairro" name="contratante_bairro" placeholder="Bairro">
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratante_cidade">Cidade</label>
+                                                <input type="text" id="contratante_cidade" name="contratante_cidade" placeholder="Cidade">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratante_estado">UF</label>
+                                                <input type="text" id="contratante_estado" name="contratante_estado" placeholder="SP">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="fieldset" id="fieldsetB">
+                                        <legend id="legendB">Contratado</legend>
+                                        <div class="form-group">
+                                            <label id="labelNomeB" for="contratado_nome">Nome / Razão Social *</label>
+                                            <input type="text" id="contratado_nome" name="contratado_nome" placeholder="Maria Oliveira" required />
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratado_nacionalidade">Nacionalidade</label>
+                                                <input type="text" id="contratado_nacionalidade" name="contratado_nacionalidade" placeholder="brasileiro(a)" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratado_profissao">Profissão</label>
+                                                <input type="text" id="contratado_profissao" name="contratado_profissao" placeholder="Designer" />
+                                            </div>
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratado_estado_civil">Estado Civil</label>
+                                                <select id="contratado_estado_civil" name="contratado_estado_civil">
+                                                    <option value="">Selecione</option>
+                                                    <option value="solteiro(a)">Solteiro(a)</option>
+                                                    <option value="casado(a)">Casado(a)</option>
+                                                    <option value="divorciado(a)">Divorciado(a)</option>
+                                                    <option value="viúvo(a)">Viúvo(a)</option>
+                                                    <option value="em união estável">União Estável</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratado_rg">RG</label>
+                                                <input type="text" id="contratado_rg" name="contratado_rg" class="mask-rg" placeholder="00.000.000-0" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contratado_cpf">CPF / CNPJ *</label>
+                                            <input type="text" id="contratado_cpf" name="contratado_cpf" class="mask-cpf-cnpj" placeholder="000.000.000-00" required />
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratado_cep">CEP *</label>
+                                                <input type="text" id="contratado_cep" name="contratado_cep" placeholder="00000-000" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratado_numero">Número *</label>
+                                                <input type="text" id="contratado_numero" name="contratado_numero" placeholder="123" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contratado_rua">Rua</label>
+                                            <input type="text" id="contratado_rua" name="contratado_rua" placeholder="Nome da rua">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contratado_bairro">Bairro</label>
+                                            <input type="text" id="contratado_bairro" name="contratado_bairro" placeholder="Bairro">
+                                        </div>
+                                        <div class="form-row-inner">
+                                            <div class="form-group">
+                                                <label for="contratado_cidade">Cidade</label>
+                                                <input type="text" id="contratado_cidade" name="contratado_cidade" placeholder="Cidade">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contratado_estado">UF</label>
+                                                <input type="text" id="contratado_estado" name="contratado_estado" placeholder="SP">
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="data_primeira_parcela">Data da primeira parcela</label>
-                                <input type="date" id="data_primeira_parcela" name="data_primeira_parcela">
+                        <div class="form-section-block">
+                            <div class="form-section-header">
+                                <span class="form-section-number">2</span>
+                                <span class="form-section-label" id="labelSecao2">Objeto e Valores</span>
+                            </div>
+
+                            <div class="form-group ps-field" id="wrapObjeto">
+                                <label for="objeto" id="labelObjeto">Descrição detalhada do serviço *</label>
+                                <textarea id="objeto" name="objeto" rows="4" placeholder="Descreva detalhadamente o serviço a ser prestado, incluindo escopo, entregas e especificações técnicas..." required></textarea>
+                            </div>
+
+                            <div class="form-group cv-field" id="wrapBem" style="display:none; padding-top: 35px !important;">
+                                <label for="bem_descricao" style="display: block; margin-bottom: 8px;">Descrição do bem / objeto da venda *</label>
+                                <textarea id="bem_descricao" name="bem_descricao" rows="3" placeholder="Descreva o bem..."></textarea>
+                            </div>
+
+                            <div class="form-row cv-field" id="wrapBemEstado" style="display:none">
+                                <div class="form-group">
+                                    <label for="estado_bem">Estado de conservação *</label>
+                                    <select id="estado_bem" name="estado_bem">
+                                        <option value="">— Selecione —</option>
+                                        <option value="Novo">Novo</option>
+                                        <option value="Seminovo">Seminovo</option>
+                                        <option value="Usado">Usado</option>
+                                        <option value="Recondicionado">Recondicionado</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="local_entrega">Local de entrega / transferência</label>
+                                    <input type="text" id="local_entrega" name="local_entrega" placeholder="Endereço de entrega do bem" />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="valor">Valor total (R$) *</label>
+                                    <input type="text" id="valor" name="valor" class="mask-money" placeholder="0,00" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="forma_pagamento">Forma de pagamento *</label>
+                                    <select id="forma_pagamento" name="forma_pagamento" required>
+                                        <option value="">— Selecione —</option>
+                                        <option value="avista">À vista</option>
+                                        <option value="aprazo">À prazo</option>
+                                        <option value="parcelado">Parcelado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="wrapper_avista" style="display:none; margin-bottom: 15px;" class="form-group">
+                                <label>Tipo de pagamento à vista</label>
+                                <select id="detalhe_avista" name="detalhe_avista">
+                                    <option value="pix_ted">1 - Pix / TED</option>
+                                    <option value="dinheiro">2 - Dinheiro</option>
+                                    <option value="cheque">3 - Cheque</option>
+                                </select>
+                            </div>
+
+                            <div id="wrapper_aprazo" style="display:none; margin-bottom: 15px;" class="form-group">
+                                <label>Data do Cheque Pré-datado/boleto</label>
+                                <input type="date" id="data_cheque" name="data_cheque">
+                            </div>
+
+                            <div id="wrapper_parcelado" style="display:none; background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                                <div class="form-group">
+                                    <label>Tipo de Parcelamento</label>
+                                    <select id="tipo_parcelamento" name="tipo_parcelamento">
+                                        <option value="com_entrada">1 - Com entrada</option>
+                                        <option value="parcelas_iguais">2 - Parcelas iguais</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-row-inner" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                                    <div id="col_entrada" class="form-group" style="flex: 1;">
+                                        <label>Valor da Entrada (R$)</label>
+                                        <input type="text" id="valor_entrada" name="valor_entrada" class="mask-money" placeholder="0,00">
+                                    </div>
+                                    
+                                    <div class="form-group" style="flex: 1;">
+                                        <label>Qtd. Parcelas (1-12)</label>
+                                        <input type="number" id="qtd_parcelas" name="qtd_parcelas" min="1" max="12" value="1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="data_primeira_parcela">Data da primeira parcela</label>
+                                    <input type="date" id="data_primeira_parcela" name="data_primeira_parcela">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Valor de cada Parcela (Calculado)</label>
+                                    <input type="text" id="valor_calculado_parcela" readonly style="background:#eee; font-weight: bold;" placeholder="R$ 0,00">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prazo" id="labelPrazo">Prazo de execução / vigência *</label>
+                                    <input type="text" id="prazo" name="prazo" placeholder="30 dias corridos" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="data">Data do contrato *</label>
+                                    <input type="date" id="data" name="data" required />
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Valor de cada Parcela (Calculado)</label>
-                                <input type="text" id="valor_calculado_parcela" readonly style="background:#eee; font-weight: bold;" placeholder="R$ 0,00">
+                                <label for="clausulas">Cláusulas adicionais</label>
+                                <textarea id="clausulas" name="clausulas" rows="3" placeholder="Insira obrigações, penalidades ou cláusulas extras, se houver..."></textarea>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="prazo" id="labelPrazo">Prazo de execução / vigência *</label>
-                                <input type="text" id="prazo" name="prazo" placeholder="30 dias corridos" required />
+                        <div class="form-section-block">
+                            <div class="form-section-header">
+                                <span class="form-section-number">3</span>
+                                <span class="form-section-label">Foro</span>
                             </div>
-                            <div class="form-group">
-                                <label for="data">Data do contrato *</label>
-                                <input type="date" id="data" name="data" required />
+
+                            <div class="foro-group">
+                                <label for="local">Cidade e Estado — foro eleito *</label>
+                                <input type="text" id="local" name="local" class="foro-input" placeholder="São Paulo/SP" required />
+                                <span class="field-hint">Localidade competente para resolver eventuais disputas judiciais deste contrato.</span>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="clausulas">Cláusulas adicionais</label>
-                            <textarea id="clausulas" name="clausulas" rows="3" placeholder="Insira obrigações, penalidades ou cláusulas extras, se houver..."></textarea>
+                        <div class="btn-row">
+                            <button type="button" id="generateBtn" class="btn btn-primary">📄 Gerar Contrato</button>
+                            <button type="button" id="fillTestBtn" class="btn btn-test">🧪 Preencher Dados de Teste</button>
+                            <button type="button" id="resetBtn" class="btn btn-ghost">Limpar</button>
                         </div>
+                    </form>
+                </section>
+
+                <section class="preview-section" id="previewSection" hidden>
+                    <h3 class="preview-title">Pré-visualização</h3>
+                        
+                    <div class="btn-row preview-toolbar">
+                        <button type="button" id="whatsappBtn" class="btn btn-whatsapp">🟢 Enviar WhatsApp</button>
+                    <!--<button type="button" id="emailBtn" class="btn btn-email">📧 Enviar por E-mail</button>-->
+                        <button type="button" id="printBtn" class="btn btn-print">🖨️ Imprimir / Salvar PDF</button>
+                        <button type="button" id="editBtn" class="btn btn-edit">✏️ Editar</button>
                     </div>
+                    <div class="card contract-preview" id="contractOutput"></div>
+                </section>
+            </main>
 
-                    <div class="form-section-block">
-                        <div class="form-section-header">
-                            <span class="form-section-number">3</span>
-                            <span class="form-section-label">Foro</span>
-                        </div>
-
-                        <div class="foro-group">
-                            <label for="local">Cidade e Estado — foro eleito *</label>
-                            <input type="text" id="local" name="local" class="foro-input" placeholder="São Paulo/SP" required />
-                            <span class="field-hint">Localidade competente para resolver eventuais disputas judiciais deste contrato.</span>
-                        </div>
-                    </div>
-
-                    <div class="btn-row">
-                        <button type="button" id="generateBtn" class="btn btn-primary">📄 Gerar Contrato</button>
-                        <button type="button" id="fillTestBtn" class="btn btn-test">🧪 Preencher Dados de Teste</button>
-                        <button type="button" id="resetBtn" class="btn btn-ghost">Limpar</button>
-                    </div>
-                </form>
-            </section>
-
-            <section class="preview-section" id="previewSection" hidden>
-                <h3 class="preview-title">Pré-visualização</h3>
-                    
-                <div class="btn-row preview-toolbar">
-                    <button type="button" id="whatsappBtn" class="btn btn-whatsapp">🟢 Enviar WhatsApp</button>
-                <!--<button type="button" id="emailBtn" class="btn btn-email">📧 Enviar por E-mail</button>-->
-                    <button type="button" id="printBtn" class="btn btn-print">🖨️ Imprimir / Salvar PDF</button>
-                    <button type="button" id="editBtn" class="btn btn-edit">✏️ Editar</button>
-                </div>
-                <div class="card contract-preview" id="contractOutput"></div>
-            </section>
-        </main>
-
-        <footer class="app-footer">
-            <p>ContratoFácil — Gerador de Contratos PWA &copy; 2026</p>
-        </footer>
+            <footer class="app-footer">
+                <p>ContratoFácil — Gerador de Contratos PWA &copy; 2026</p>
+            </footer>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-        <script src="app.js?v=3" defer></script>
-        <button id="backToTop" title="Voltar ao topo">↑</button>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+            <script src="app.js?v=3" defer></script>
+            <button id="backToTop" title="Voltar ao topo">↑</button>
+        </div>
     </body>
 </html>

@@ -1100,6 +1100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const startBtn = document.getElementById('startBtn');
     const checkbox = document.getElementById('acceptTerms');
     const splash = document.getElementById('splashScreen');
+    const app = document.getElementById('appWrapper');
 
     // Começa DESABILITADO
     startBtn.classList.add('disabled');
@@ -1115,40 +1116,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startBtn.addEventListener('click', function(e) {
 
+        // Vibração (mobile)
         if (navigator.vibrate) {
-        navigator.vibrate(30); // vibra por 30ms
-}
+            navigator.vibrate(30);
+        }
 
-    // RIPPLE
-    const rect = this.getBoundingClientRect();
+        // RIPPLE
+        const rect = this.getBoundingClientRect();
 
-    const circle = document.createElement('span');
-    const diameter = Math.max(this.clientWidth, this.clientHeight);
-    const radius = diameter / 2;
+        const circle = document.createElement('span');
+        const diameter = Math.max(this.clientWidth, this.clientHeight);
+        const radius = diameter / 2;
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - rect.left - radius}px`;
-    circle.style.top = `${e.clientY - rect.top - radius}px`;
-    circle.classList.add('ripple');
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${e.clientX - rect.left - radius}px`;
+        circle.style.top = `${e.clientY - rect.top - radius}px`;
+        circle.classList.add('ripple');
 
-    const ripple = this.querySelector('.ripple');
-    if (ripple) ripple.remove();
+        const ripple = this.querySelector('.ripple');
+        if (ripple) ripple.remove();
 
-    this.appendChild(circle);
+        this.appendChild(circle);
 
-    // VALIDAÇÃO
-    if (!checkbox.checked) {
-        alert('Você precisa aceitar os termos para continuar.');
-        return;
-    }
+        // VALIDAÇÃO
+        if (!checkbox.checked) {
+            alert('Você precisa aceitar os termos para continuar.');
+            return;
+        }
 
-    // 👇 DELAY PARA O RIPPLE APARECER
+        // DELAY PARA O RIPPLE APARECER
         setTimeout(() => {
 
             splash.style.opacity = '0';
 
             setTimeout(() => {
                 splash.style.display = 'none';
+
+                // 🔥 AQUI ESTAVA FALTANDO
+                app.classList.add('active');
+
             }, 400);
 
         }, 200);
