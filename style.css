@@ -1412,27 +1412,29 @@ html, body {
     transition: all 0.4s ease;
 }
 
+/* ===== TRANSIÇÃO TIPO APP (VERSÃO PROFISSIONAL) ===== */
+
+/* APP (fica escondido no início) */
 #appWrapper {
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.4s ease;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
 }
 
+/* APP aparece suave */
 #appWrapper.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* APP começa invisível */
-#appWrapper {
-    opacity: 0;
-    transform: translateY(20px);
+/* SPLASH animação */
+#splashScreen {
     transition: all 0.4s ease;
 }
 
-/* Quando ativa, aparece suave */
-#appWrapper.active {
-    opacity: 1;
-    transform: translateY(0);
+/* SPLASH saindo (efeito bancário) */
+#splashScreen.fade-out {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(4px);
 }
-

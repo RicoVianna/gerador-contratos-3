@@ -1086,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            splash.style.opacity = '0';
+            splash.classList.add('fade-out');
 
             setTimeout(() => {
                 splash.style.display = 'none';
