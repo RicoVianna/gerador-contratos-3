@@ -1091,5 +1091,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    const startBtn = document.getElementById('startBtn');
+    const checkbox = document.getElementById('acceptTerms');
+    const splash = document.getElementById('splashScreen');
+
+    // Começa DESABILITADO
+    startBtn.classList.add('disabled');
+
+    // Libera botão quando marcar
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            startBtn.classList.remove('disabled');
+        } else {
+            startBtn.classList.add('disabled');
+        }
+    });
+
+    // Clique no botão
+    startBtn.addEventListener('click', () => {
+
+        if (!checkbox.checked) {
+            alert('Você precisa aceitar os termos para continuar.');
+            return;
+        }
+
+        splash.style.display = 'none';
+    });
+
+});
+
+
 
 

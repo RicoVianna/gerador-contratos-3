@@ -1266,3 +1266,88 @@ html, body {
     text-align: center;
 }
 
+/* ===== SPLASH SCREEN - ESTILO APP BANCÁRIO ===== */
+
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1a56db, #7e3af2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* CARD CENTRAL */
+.splash-card {
+    background: #fff;
+    padding: 40px 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* LOGO */
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* TÍTULO */
+.splash-card h1 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+/* SUBTEXTO */
+.subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* CHECKBOX */
+.check-area {
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-start {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #1a56db;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* HOVER */
+.btn-start:hover {
+    background: #1346b5;
+}
+
+/* BOTÃO DESABILITADO */
+.btn-start.disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* RODAPÉ */
+.splash-footer {
+    position: absolute;
+    bottom: 15px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.8);
+}
+
